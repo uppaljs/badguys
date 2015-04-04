@@ -27,6 +27,10 @@
 -A RH-Firewall-1-INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 #Allow Different Connection States
 -A RH-Firewall-1-INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+#Allow Our Ranges
+-A RH-Firewall-1-INPUT  -s 182.176.221.32/27 -j ACCEPT
+-A RH-Firewall-1-INPUT  -s 182.176.221.64/30 -j ACCEPT
+-A RH-Firewall-1-INPUT  -s 182.176.220.33/27 -j ACCEPT
 #Allow Ports
 -A RH-Firewall-1-INPUT -p tcp -m state --state NEW -m tcp --dport 2229 -j ACCEPT
 -A RH-Firewall-1-INPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
